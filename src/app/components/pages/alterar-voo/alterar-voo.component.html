@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <h3 class="text-center"> Alterar Voo </h3>
+        <div class="row">
+            <div class="card-body">
+                <form (ngSubmit)="alterarVoo()">
+            
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="codigoAviao">Código Voo</label>
+                          <input disabled
+                            type="text"
+                            class="form-control"
+                            id="codigoAviao"
+                            [(ngModel)]="voo.codigoAviao"
+                            name="codigoAviao"
+                        />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="assentos">Total Assentos</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="assentos"
+                            [(ngModel)]="voo.totalAssentos"
+                            name="assentos" disabled
+                          />
+                        </div>
+                      </div>
+                      <div class="form-row">
+                        <div class="form-group col-md-6">
+                          <label for="classe">Aeroporto de Origem</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="voo.origem"
+                            id="ori"
+                            name="ori"
+                            disabled
+                          />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="classe">Aeroporto de Destino</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            [(ngModel)]="voo.destino"
+                            id="des"
+                            name="des" 
+                            disabled
+                          />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="codigoAviao">Partida</label>
+                          <input
+                          type="text"
+                          class="form-control"
+                          id="partida"
+                          required
+                          [value]="voo.partida | date:'dd/MM/yyyy'"
+                          name="partida"
+                      />
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="codigoAviao">Chegada</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="chegada"
+                            required
+                            [value]="voo.chegada | date:'dd/MM/yyyy'"
+                            name="chegada"
+                        />
+                        </div>
+                      </div>
+          
+                      <div class="form-row">
+                        <div class="form-group col-md-4">
+                          <div class="form-check">
+                            <label>Classe</label>
+                          </div>
+                          <div class="form-check">
+                            <input
+                              type="checkbox" 
+                              (change)="doSomething($event, 'Economica')"
+                            />
+                            Económica
+                          </div>
+                          <br />
+                          <div class="form-check">
+                            <input
+                              type="checkbox"
+                              (change)="doSomething($event, 'Primeira')"
+                            />
+                            Primeira
+                          </div>
+                          <br />
+                          <div class="form-check">
+                            <input
+                              type="checkbox"
+                              (change)="doSomething($event, 'Executiva')"
+                            />
+                            Executiva
+                          </div>
+                        </div>
+          
+                        <div class="form-group col-md-4">
+                          <label>Total Assentos</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="qtdE"
+                            required
+                            [(ngModel)]="voo.qtdAssentoEconomica" (blur)="onSelectBlurAssentos(voo.qtdAssentoEconomica)"
+                            name="qtdE" [disabled]="habilitaEco"
+                          />
+                          <br />
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="qtdP"
+                            required
+                            [(ngModel)]="voo.qtdAssentoPrimeira" (blur)="onSelectBlurAssentos(voo.qtdAssentoPrimeira)"
+                            name="qtdP"  [disabled]="habilitaPri"
+                          />
+                          <br />
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="qtdEx"
+                            required
+                            [(ngModel)]="voo.qtdAssentoExecutiva" (blur)="onSelectBlurAssentos(voo.qtdAssentoExecutiva)"
+                            name="qtdEx" [disabled]="habilitaEx"
+                          />
+                        </div>
+                        <div class="form-group col-md-4">
+                          <label>Valor do Assento</label>
+                          <input 
+                            type="number"
+                            class="form-control"
+                            id="prE"
+                            required
+                            [(ngModel)]="voo.precoAssentoEconomica"
+                            name="prE" [disabled]="habilitaEco"
+                          />
+                          <br />
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="prP"
+                            required
+                            [(ngModel)]="voo.precoAssentoPrimeira"
+                            name="prP" [disabled]="habilitaPri"
+                          />
+                          <br />
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="prEx"
+                            required
+                            [(ngModel)]="voo.precoAssentoExecutiva"
+                            name="prEx" [disabled]="habilitaEx"
+                          />
+                        </div>
+                      </div>
+                    <br />
+                    <button class="btn btn-success" type="submit">Alterar</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

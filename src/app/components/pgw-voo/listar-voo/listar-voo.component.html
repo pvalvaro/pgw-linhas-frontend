@@ -1,0 +1,75 @@
+<div class="container">
+    <h2>Lista de Voos</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Código</th>
+          <th>Origem</th>
+          <th>Destino</th>
+          <th>Partida</th>
+          <th>Chegada</th>
+          <th>Assentos</th>
+          <th>Económica</th>
+          <th>Primeira</th>
+          <th>Executiva</th>
+          <th>Status</th>
+          <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let voo of voos">
+        <td>{{ voo.codigoAviao }}</td>
+          <td>{{ voo.origem }}</td>
+          <td>{{ voo.destino }}</td>
+          <td>{{ voo.partida | date:'dd/MM/yyyy'}}</td>
+          <td>{{ voo.chegada | date:'dd/MM/yyyy'}}</td>
+          <td>{{ voo.totalAssentos }}</td>
+        <td>
+          <div>
+            <span>Assentos:</span>
+            <span>{{ voo.qtdAssentoEconomica}}</span>
+          </div>
+          <div>
+            <span>Valor:</span>
+            <span>{{ voo.precoAssentoEconomica }}</span>
+          </div>
+        </td>
+        <td>
+          <div>
+            <span>Assentos:</span>
+            <span>{{ voo.qtdAssentoPrimeira}}</span>
+          </div>
+          <div>
+            <span>Valor:</span>
+            <span>{{ voo.precoAssentoPrimeira }}</span>
+          </div>
+        </td>
+        <td>
+          <div>
+            <span>Assentos:</span>
+            <span>{{ voo.qtdAssentoExecutiva}}</span>
+          </div>
+          <div>
+            <span>Valor:</span>
+            <span>{{ voo.precoAssentoExecutiva }}</span>
+          </div>
+        </td>
+        <td>{{ voo.status }}</td>
+          <td>
+            <div class="d-flex justify-content-between">
+              <button (click)="alterarVoo(voo.vooId, voo)" class="btn btn-primary">
+                Alterar
+              </button>
+              <button
+                (click)="cancelarVoo(voo.vooId, voo)"
+                class="btn btn-danger"
+                style="margin-left: 10px"
+              >
+                Cancelar
+              </button>
+            </div>
+          </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

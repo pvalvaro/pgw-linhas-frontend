@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3" *ngIf="!habilitarAlterar">
+        <h3 class="text-center"> Cadastrar Preços </h3>
+        <div class="row">
+            <div class="card-body">
+                <form (ngSubmit)="cadastrarPreco()">
+                    <div class="form-group">
+                        <label for="classe">Tipo de Classe</label>
+                        <select class="custom-select mr-sm-2" [(ngModel)]="preco.classeNome" name="classe">
+                            <option value="Economica">Economica</option>
+                            <option value="Primeira">Primeira</option>
+                            <option value="Executiva">Executiva</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="assento">Valor do Assento</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="assentosCa"
+                            required
+                            [(ngModel)]="preco.valorAssento"
+                            name="assentosCa"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="qtd">Quantidade de Assentos</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="qtd"
+                            required
+                            [(ngModel)]="preco.qtdAssentos"
+                            name="qtd"
+                        />
+                    </div>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+
+    <br/>
+
+    <div class="card col-md-6 offset-md-3 offset-md-3" *ngIf="habilitarAlterar">
+        <h3 class="text-center"> Alterar Preço </h3>
+        <div class="row">
+            <div class="card-body">
+                <form (ngSubmit)="alterarPreco()">
+                    <div class="form-group">
+                        <label for="codigoAviao">Tipo de Classe</label>
+                        <input disabled
+                            type="text"
+                            class="form-control"
+                            id="classe"
+                            required
+                            [(ngModel)]="preco.classeNome"
+                            name="classe"
+                        />
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="valor">Valor do Assento</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="valor"
+                            required
+                            [(ngModel)]="preco.valorAssento"
+                            name="valor"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="assentos">Quantidade de Assentos</label>
+                        <input
+                            type="number"
+                            class="form-control"
+                            id="assentos"
+                            required
+                            [(ngModel)]="preco.qtdAssentos"
+                            name="assentos"
+                        />
+                    </div>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Alterar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div  *ngIf="habilitarTabela">
+        <div class = "row">
+            <h2> Tabela de Preços</h2>
+        </div>
+
+        <table class = "table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th> Classe</th>
+                    <th> Valor do Assento </th>
+                    <th> Quantidade de Assentos </th>
+                    <th> Ações </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let preco of precos" >
+                    <td> {{ preco.classeNome }} </td>
+                    <td> {{ preco.valorAssento }} </td>
+                    <td> {{ preco.qtdAssentos }} </td>
+                    <td>
+                        <button  (click) = "abrirAlterar(preco)" class = "btn btn-primary"> Alterar</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

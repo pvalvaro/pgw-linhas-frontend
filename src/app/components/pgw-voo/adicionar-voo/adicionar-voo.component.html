@@ -1,0 +1,306 @@
+<div class="row">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <h3 class="text-center">Cadastrar Voo</h3>
+    <div class="row">
+      <div class="card-body">
+          <form (ngSubmit)="cadastrarVoo()">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="codigoAviao">Código Voo</label>
+                <select
+                  class="custom-select mr-sm-2"
+                  [(ngModel)]="voo.codigoAviao"
+                  name="codigoAviao"
+                >
+                  <option value="Selecione">Selecione...</option>
+                  <option *ngFor="let codigo of listCodigovoos">
+                    {{ codigo.cod }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="assentos">Total Assentos</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="assentos"
+                  required
+                  [(ngModel)]="voo.totalAssentos"
+                  name="assentos" (blur)="onSelectBlurTotalAssento()"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="classe">Aeroporto de Origem</label>
+                <select
+                  class="custom-select mr-sm-2"
+                  [(ngModel)]="voo.origem"
+                  name="classe"
+                  (blur)="onSelectBlur()"
+                >
+                  <option value="Selecione...">Selecione...</option>
+                  <option *ngFor="let aeroporto of aeroportos">
+                    {{ aeroporto.cidadeNome }}-{{ aeroporto.codigoIATA }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="classe">Aeroporto de Destino</label>
+                <select
+                  class="custom-select mr-sm-2"
+                  [(ngModel)]="voo.destino"
+                  name="classe"
+                  (blur)="onSelectBlur()"
+                >
+                  <option value="Selecione...">Selecione...</option>
+                  <option *ngFor="let aeroporto of aeroportos">
+                    {{ aeroporto.cidadeNome }}-{{ aeroporto.codigoIATA }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="codigoAviao">Data Partida</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="partida"
+                  required
+                  [(ngModel)]="voo.partida"
+                  name="partida"
+                />
+              </div>
+              <div class="form-group col-md-6">
+                <label for="codigoAviao">Data Chegada</label>
+                <input
+                  type="date"
+                  class="form-control"
+                  id="chegada"
+                  required
+                  [(ngModel)]="voo.chegada"
+                  name="chegada"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="hora">Hora Partida</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="hora"
+                  required
+                  [(ngModel)]="voo.horaPartida"
+                  name="hora"
+                />
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="hora">Hora Chegada</label>
+                <input
+                  type="time"
+                  class="form-control"
+                  id="hora"
+                  required
+                  [(ngModel)]="voo.horaChegada"
+                  name="hora"
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <div class="form-check">
+                  <label>Classe</label>
+                </div>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    (change)="doSomething($event, 'Economica')"
+                  />
+                  Económica
+                </div>
+                <br />
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    (change)="doSomething($event, 'Primeira')"
+                  />
+                  Primeira
+                </div>
+                <br />
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    (change)="doSomething($event, 'Executiva')"
+                  />
+                  Executiva
+                </div>
+              </div>
+
+              <div class="form-group col-md-4">
+                <label>Total Assentos</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="qtdE"
+                  required
+                  [(ngModel)]="voo.qtdAssentoEconomica" (blur)="onSelectBlurAssentos(voo.qtdAssentoEconomica)"
+                  name="qtdE" [disabled]="habilitaEco"
+                />
+                <br />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="qtdP"
+                  required
+                  [(ngModel)]="voo.qtdAssentoPrimeira" (blur)="onSelectBlurAssentos(voo.qtdAssentoPrimeira)"
+                  name="qtdP"  [disabled]="habilitaPri"
+                />
+                <br />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="qtdEx"
+                  required
+                  [(ngModel)]="voo.qtdAssentoExecutiva" (blur)="onSelectBlurAssentos(voo.qtdAssentoExecutiva)"
+                  name="qtdEx" [disabled]="habilitaEx"
+                />
+              </div>
+              <div class="form-group col-md-4">
+                <label>Valor do Assento</label>
+                <input 
+                  type="number"
+                  class="form-control"
+                  id="prE"
+                  required
+                  [(ngModel)]="voo.precoAssentoEconomica"
+                  name="prE" [disabled]="habilitaEco"
+                />
+                <br />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="prP"
+                  required
+                  [(ngModel)]="voo.precoAssentoPrimeira"
+                  name="prP" [disabled]="habilitaPri"
+                />
+                <br />
+                <input
+                  type="number"
+                  class="form-control"
+                  id="prEx"
+                  required
+                  [(ngModel)]="voo.precoAssentoExecutiva"
+                  name="prEx" [disabled]="habilitaEx"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <button class="btn btn-primary" type="submit">Salvar</button>
+              </div>
+            </div>
+          </form>
+      </div>
+      </div>
+      <div>
+    </div>
+</div>
+
+<div class="container">
+  <h2>Lista de Voos</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Código</th>
+        <th>Origem</th>
+        <th>Destino</th>
+        <th>Partida</th>
+        <th>Chegada</th>
+        <th>Assentos</th>
+        <th>Económica</th>
+        <th>Primeira</th>
+        <th>Executiva</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let voo of voos">
+      <td>{{ voo.codigoAviao }}</td>
+        <td>{{ voo.origem }}</td>
+        <td>{{ voo.destino }}</td>
+        <td>
+          <div>
+            <span>Data:</span>
+            <span>{{ voo.partida | date:'dd/MM/yyyy'}}</span>
+          </div>
+          <div>
+            <span>Hora:</span>
+            <span>{{voo.horaPartida}}</span>
+          </div>
+        </td>
+        <td>
+          <div>
+            <span>Data:</span>
+            <span>{{ voo.chegada | date:'dd/MM/yyyy'}}</span>
+          </div>
+          <div>
+            <span>Hora:</span>
+            <span>{{voo.horaChegada}}</span>
+          </div>
+        </td>
+        <td>{{ voo.totalAssentos }}</td>
+        <td>
+          <div>
+            <span>Assentos:</span>
+            <span>{{ voo.qtdAssentoEconomica}}</span>
+          </div>
+          <div>
+            <span>Valor:</span>
+            <span>{{ voo.precoAssentoEconomica }}</span>
+          </div>
+        </td>
+      
+      <td>
+        <div>
+          <span>Assentos:</span>
+          <span>{{ voo.qtdAssentoPrimeira}}</span>
+        </div>
+        <div>
+          <span>Valor:</span>
+          <span>{{ voo.precoAssentoPrimeira }}</span>
+        </div>
+      </td>
+      <td>
+        <div>
+          <span>Assentos:</span>
+          <span>{{ voo.qtdAssentoExecutiva}}</span>
+        </div>
+        <div>
+          <span>Valor:</span>
+          <span>{{ voo.precoAssentoExecutiva }}</span>
+        </div>
+      </td>
+      <td>{{ voo.status }}</td>
+        <td>
+          <div class="d-flex justify-content-between">
+            <button (click)="alterarVoo(voo.vooId, voo)" class="btn btn-primary">
+              Alterar
+            </button>
+            <button
+              (click)="cancelarVoo(voo.vooId, voo)"
+              class="btn btn-danger"
+              style="margin-left: 10px"
+            >
+              Cancelar
+            </button>
+          </div>
+        </td>
+    </tr>
+  </tbody>
+</table>
+</div>
