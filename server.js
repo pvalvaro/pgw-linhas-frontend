@@ -4,7 +4,7 @@ const path = require("path");
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 4200;
 
 // Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
 app.use(express.static(__dirname + '/dist/pgw-linhas-frontend'));
