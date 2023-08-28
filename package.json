@@ -1,15 +1,17 @@
 {
-  "name": "angular-pgw",
+  "name": "pgw-linhas-frontend",
   "version": "0.0.0",
   "engines": {
     "node": "14.17.3",
     "npm": "6.14.13"
   },
+  
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
     "build": "ng build",
     "heroku-postbuild": "ng build --configuration production",
+    "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
