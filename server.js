@@ -4,12 +4,16 @@ const path = require("path");
 
 const app = express();
 
-// Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
-app.use(express.static("./dist/pgw-linhas-frontend"));
+const PORT = process.env.PORT || 8080;
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/pgw-linhas-frontend/'}),
+// Serve os arquivos estáticos da pasta dist (gerada pelo ng build)
+app.use(express.static(__dirname + '/dist/pgw-linhas-frontend'));
+
+app.get("/*", (req, res) =>
+  res.sendFile(__dirname + 'dist/pgw-linhas-frontend/index.html')
 );
 
 // Inicia a aplicação pela porta configurada
-app.listen(process.env.PORT || 3000);
+app.listen(PORT, () => {
+  console.log("Servidor iniciado na porta: " + PORT);
+});
