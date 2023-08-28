@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy:ghdocs":"ng build --configuration production --output-path docs --base-href /pgw-linhas-frontend/"
+    "deploy:ghdocs": "ng build --configuration production --output-path docs --base-href /pgw-linhas-frontend/"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +32,7 @@
     "@angular/cli": "~14.2.12",
     "@angular/compiler-cli": "^14.2.0",
     "@types/jasmine": "~4.0.0",
+    "angular-cli-ghpages": "^1.0.6",
     "jasmine-core": "~4.3.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",
