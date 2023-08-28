@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/pgw-linhas-frontend'),
+      dir: require('path').join(__dirname, './coverage/angular-pgw'),
       subdir: '.',
       reporters: [
         { type: 'html' },

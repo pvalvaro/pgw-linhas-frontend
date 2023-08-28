@@ -1,0 +1,73 @@
+<div class="row" *ngIf="ticket === null">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <h3 class="text-center">Voucher</h3>
+    <div class="row">
+      <div class="card-body">
+        <form (ngSubmit)="emitir()">
+          <div class="form-row" *ngIf="passagem">
+            <div class="form-group col-md-12" >
+              <label for="codigoAviao">Número da Passagem:</label>
+              {{passagem.localizador}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Código Voo:</label>
+              {{passagem.codigoVoo}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Origem:</label>
+              {{passagem.origem}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Destino:</label>
+              {{passagem.destino}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Passageiro:</label>
+              {{passagem.passageiroNome}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Despacho de Bagagem:</label>
+              {{passagem.qtdBagagemExtra}}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <button class="btn btn-primary" type="submit">Imprimir</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="passagem.qtdBagagemExtra !== 0">
+  <div class="card col-md-6 offset-md-3 offset-md-3">
+    <h3 class="text-center">Ticket</h3>
+    <div class="row">
+      <div class="card-body">
+        <form (ngSubmit)="emitir()">
+          <div class="form-row">
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Número da Passagem:</label>
+              {{passagem.localizador}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Número da Bagagem:</label>
+              {{passagem.identificBagagem}}
+            </div>
+            <div class="form-group col-md-12">
+              <label for="codigoAviao">Passageiro:</label>
+              {{passagem.passageiroNome}}
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <button class="btn btn-primary" type="submit">Imprimir</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

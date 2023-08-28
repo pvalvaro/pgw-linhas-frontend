@@ -1,0 +1,98 @@
+<div class="row">
+    <div class="card col-md-6 offset-md-3 offset-md-3">
+        <h3 class="text-center"> Resumo da Compra </h3>
+        <div class="row">
+            <div class="card-body">
+                <h4>Passageiro</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="nomeComprador">Nome</label>
+                        <input type="text" disabled class="form-control" id="nomeComprador" [(ngModel)]="passagem.passageiroNome">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cpfComprador">CPF</label>
+                        <input type="text" disabled class="form-control" id="cpfComprador"  [(ngModel)]="passagem.cpfPassageiro">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="dataNascimento">Nascimento</label>
+                        <input type="text" disabled class="form-control" id="date" [(ngModel)]="passagem.dataNascimentoPassageiro">
+                    </div> 
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="classe">Tipo de Classe</label>
+                        <input type="text" disabled class="form-control" id="classe"  [(ngModel)]="passagem.classeEscolhida">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="qtd">Quant. de Passagens</label>
+                        <input type="text" disabled class="form-control" id="qtd" [(ngModel)]="passagem.qtdPassagens">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="qtdBa">Bagagem Extra</label>
+                        <input type="text" disabled class="form-control" id="qtdBa"  [(ngModel)]="passagem.qtdBagagemExtra">
+                    </div>
+                </div>
+
+                <h4>Voo</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="origem">Origem</label>
+                        <input type="text" disabled class="form-control" id="origem" [(ngModel)]="passagem.origem">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="destino">Destino</label>
+                        <input type="text" disabled class="form-control" id="destino" [(ngModel)]="passagem.destino">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="partida">Parida</label>
+                        <input type="text" disabled class="form-control" id="partida"  [(ngModel)]="passagem.dataPartida">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="chegada">Chegada</label>
+                        <input type="text" disabled class="form-control" id="chegada"  [(ngModel)]="passagem.dataChegada">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="codigo">Código Voo</label>
+                        <input type="text" disabled class="form-control" id="codigo"  [(ngModel)]="passagem.codigoVoo">
+                    </div>
+                </div>
+            
+                <h4>Comprador</h4>
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                        <label for="nomeComprador">Nome</label>
+                        <input type="text" disabled class="form-control" id="nomeComprador" [(ngModel)]="passagem.nomeComprador">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="cpfComprador">CPF</label>
+                        <input type="text" disabled class="form-control" id="cpfComprador" [(ngModel)]="passagem.cpfComprador">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="inputEmail4">Email</label>
+                        <input type="text" disabled class="form-control" id="inputEmail4" [(ngModel)]="passagem.emailComprador">
+                    </div>
+                    
+                    <div class="form-group col-md-4">
+                        <span>Bag. Extra (10%)*: R$ {{passagem.valorBagagemExtra}} </span>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <span>Assento: R$ {{passagem.valorAssento}}</span>
+                    </div> 
+                    <div class="form-group col-md-4">
+                        <span>Total: R$ {{passagem.totalViagem}}</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <form (ngSubmit)="finalizaCompra()">
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-success" type="submit">Finalizar</button>
+                        </div>
+                    </form>
+                    <div class="form-group col-md-4">
+                        <button (click)="cancelar()" class="btn btn-danger" type="submit">Cancelar</button>
+                      </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
