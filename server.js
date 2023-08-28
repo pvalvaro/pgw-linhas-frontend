@@ -12,4 +12,4 @@ app.get('/*', (req, res) =>
 );
 
 // Inicia a aplicação pela porta configurada
-app.listen(process.env.PORT || 8080);
+app.listen(process.env.PORT || 3000);
